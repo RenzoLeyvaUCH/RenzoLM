@@ -1,10 +1,8 @@
-// script.js
-
-// arreglo para almacenar las reservas en memoria
+// Arreglo para almacenar las reservas en memoria
 let pacientes = [];
 let indiceEditar = -1;
 
-// 1. Al cargar la página, fijar min del datepicker para validar fecha >= hoy
+// Al cargar la página, fijar min del datepicker para validar fecha >= hoy
 window.addEventListener('DOMContentLoaded', () => {
   const inputFecha = document.getElementById('fecha');
   inputFecha.min = new Date().toISOString().split('T')[0];
@@ -13,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnRegistrar')
           .addEventListener('click', registrarPaciente);
 
-  // mostrar cualquier reserva ya existente
+  // mostrar cualquier reserva ya existenteA
   mostrarPacientes();
 });
 
@@ -24,30 +22,30 @@ function registrarPaciente() {
   const actividad = document.getElementById('actividad').value.trim();
   const fecha     = document.getElementById('fecha').value.trim();
 
-  // 5a) Validar nombre: al menos 3 letras
+  // a) Validar nombre: al menos 3 letras
   if (nombre.length < 3) {
     alert("El nombre debe tener al menos 3 letras.");
     return;
   }
-  // 5b) Validar nombre: sólo letras y espacios
+  // b) Validar nombre: sólo letras y espacios
   if (!/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/.test(nombre)) {
     alert("El nombre sólo puede contener letras y espacios.");
     return;
   }
 
-  // 5c) Validar campos obligatorios
+  // c) Validar campos obligatorios
   if (!matri || !actividad || !fecha) {
     alert("Por favor, complete todos los campos.");
     return;
   }
 
-  // 5d) Validar matrícula: 8 caracteres alfanuméricos y positivos
+  // d) Validar matrícula: 8 caracteres alfanuméricos y positivos
   if (matri.length !== 8 || isNaN(matri) || parseInt(matri, 10) <= 0) {
     alert("El Código de Matrícula debe tener 8 dígitos numéricos y ser positivo.");
     return;
   }
 
-  // 5e) Validar fecha: no anterior a hoy
+  // e) Validar fecha: no anterior a hoy
   const fechaSel = new Date(fecha);
   const hoyComp  = new Date();
   hoyComp.setHours(0,0,0,0);
@@ -71,7 +69,7 @@ function registrarPaciente() {
   }
 
   limpiarFormulario();
-  mostrarPacientes();  // refrescar la tabla
+  mostrarPacientes();  
 }
 
 // Función para Leer (mostrar) todas las reservas
