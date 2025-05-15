@@ -39,13 +39,7 @@ function registrarPaciente() {
     return;
   }
 
-  // d) Validar matrícula: 8 caracteres alfanuméricos y positivos
-  if (matri.length !== 8 || isNaN(matri) || parseInt(matri, 10) <= 0) {
-    alert("El Código de Matrícula debe tener 8 dígitos numéricos y ser positivo.");
-    return;
-  }
-
-  // e) Validar fecha: no anterior a hoy
+  // d) Validar fecha: no anterior a hoy
   const fechaSel = new Date(fecha);
   const hoyComp  = new Date();
   hoyComp.setHours(0,0,0,0);
